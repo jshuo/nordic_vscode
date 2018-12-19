@@ -17,7 +17,7 @@ rem Location of java
 set JAVA=C:/Program Files (x86)/Java/jdk1.8.0_191/bin/java.exe
 
 rem Serial numbers of nRF development boards
-set PCA10056_SN=683798348
+set PCA10056_SN=683375263
 set PCA10040_SN=682645815
 
 "C:/Users/user/AppData/Local/Programs/Microsoft VS Code/Code.exe" ble_app_blinky.code-workspace

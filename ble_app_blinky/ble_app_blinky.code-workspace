@@ -12,5 +12,11 @@
                         "name": "PCA10040/s132",
 			"path": "pca10040/s132/armgcc"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"nrf_sdh_ble.h": "c",
+			"nrf_log.h": "c"
+		}
+	}
 }
