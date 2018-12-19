@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"name": "BLE Example NUS UART FreeRTOS",
+			"path": "."
+		},
+		{
+			"name": "PCA10056/s140",
+			"path": "pca10056/s140/armgcc"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"nrf_sdh_ble.h": "c",
+			"nrf_log.h": "c"
+		}
+	}
+}
