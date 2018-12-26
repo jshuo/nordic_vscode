@@ -648,7 +648,7 @@
 // <i> The CC310 hardware-accelerated cryptography backend (only available on nRF52840).
 //==========================================================
 #ifndef NRF_CRYPTO_BACKEND_CC310_ENABLED
-#define NRF_CRYPTO_BACKEND_CC310_ENABLED 0
+#define NRF_CRYPTO_BACKEND_CC310_ENABLED 1
 #endif
 // <q> NRF_CRYPTO_BACKEND_CC310_AES_CBC_ENABLED  - Enable the AES CBC mode using CC310.
  
@@ -1232,7 +1232,26 @@
 
 // </e>
 
-// </h> 
+// <h> nrf_crypto_rng - RNG Configuration
+
+//==========================================================
+// <q> NRF_CRYPTO_RNG_STATIC_MEMORY_BUFFERS_ENABLED  - Use static memory buffers for context and temporary init buffer.
+ 
+
+// <i> Always recommended when using the nRF HW RNG as the context and temporary buffers are small. Consider disabling if using the CC310 RNG in a RAM constrained application. In this case, memory must be provided to nrf_crypto_rng_init, or it can be allocated internally provided that NRF_CRYPTO_ALLOCATOR does not allocate memory on the stack.
+
+#ifndef NRF_CRYPTO_RNG_STATIC_MEMORY_BUFFERS_ENABLED
+#define NRF_CRYPTO_RNG_STATIC_MEMORY_BUFFERS_ENABLED 1
+#endif
+
+// <q> NRF_CRYPTO_RNG_AUTO_INIT_ENABLED  - Initialize the RNG module automatically when nrf_crypto is initialized.
+ 
+
+// <i> Automatic initialization is only supported with static or internally allocated context and temporary memory.
+
+#ifndef NRF_CRYPTO_RNG_AUTO_INIT_ENABLED
+#define NRF_CRYPTO_RNG_AUTO_INIT_ENABLED 1
+#endif
 //==========================================================
 
 // <h> nRF_DFU 
@@ -6361,7 +6380,7 @@
 // <e> APP_USBD_HID_ENABLED - app_usbd_hid - USB HID class
 //==========================================================
 #ifndef APP_USBD_HID_ENABLED
-#define APP_USBD_HID_ENABLED 0
+#define APP_USBD_HID_ENABLED 1
 #endif
 // <o> APP_USBD_HID_DEFAULT_IDLE_RATE - Default idle rate for HID class.   <0-255> 
 
@@ -6387,7 +6406,7 @@
  
 
 #ifndef APP_USBD_HID_GENERIC_ENABLED
-#define APP_USBD_HID_GENERIC_ENABLED 0
+#define APP_USBD_HID_GENERIC_ENABLED 1
 #endif
 
 // <q> APP_USBD_HID_KBD_ENABLED  - app_usbd_hid_kbd - USB HID keyboard
@@ -6429,13 +6448,13 @@
  
 
 #ifndef ECC_ENABLED
-#define ECC_ENABLED 0
+#define ECC_ENABLED 1
 #endif
 
 // <e> FDS_ENABLED - fds - Flash data storage module
 //==========================================================
 #ifndef FDS_ENABLED
-#define FDS_ENABLED 0
+#define FDS_ENABLED 1
 #endif
 // <h> Pages - Virtual page settings
 
@@ -6657,7 +6676,7 @@
 // <e> MEM_MANAGER_ENABLED - mem_manager - Dynamic memory allocator
 //==========================================================
 #ifndef MEM_MANAGER_ENABLED
-#define MEM_MANAGER_ENABLED 0
+#define MEM_MANAGER_ENABLED 1
 #endif
 // <o> MEMORY_MANAGER_SMALL_BLOCK_COUNT - Size of each memory blocks identified as 'small' block.  <0-255> 
 
@@ -6957,7 +6976,7 @@
 // <e> NRF_FSTORAGE_ENABLED - nrf_fstorage - Flash abstraction library
 //==========================================================
 #ifndef NRF_FSTORAGE_ENABLED
-#define NRF_FSTORAGE_ENABLED 0
+#define NRF_FSTORAGE_ENABLED 1
 #endif
 // <h> nrf_fstorage - Common settings
 
@@ -7151,7 +7170,7 @@
 // <e> NRF_QUEUE_ENABLED - nrf_queue - Queue module
 //==========================================================
 #ifndef NRF_QUEUE_ENABLED
-#define NRF_QUEUE_ENABLED 0
+#define NRF_QUEUE_ENABLED 1
 #endif
 // <q> NRF_QUEUE_CLI_CMDS  - Enable CLI commands specific to the module
  
@@ -13054,7 +13073,9 @@
 
 // </h> 
 //==========================================================
-
+#ifndef NRF_U2F_ENABLED
+#define NRF_U2F_ENABLED 0
+#endif
 // </h> 
 //==========================================================
 
