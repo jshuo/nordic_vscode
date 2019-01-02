@@ -327,7 +327,7 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
     {
         bsp_board_led_invert(LED_BLE_NUS_RX);
         NRF_LOG_INFO("Received data from BLE NUS. Writing data on CDC ACM.");
- //       NRF_LOG_INFO(p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
+        NRF_LOG_INFO(p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
         memcpy(m_nus_data_array, p_evt->params.rx_data.p_data, p_evt->params.rx_data.length);
 
         // Add endline characters
@@ -337,11 +337,17 @@ static void nus_data_handler(ble_nus_evt_t * p_evt)
             memcpy(m_nus_data_array + length, ENDLINE_STRING, sizeof(ENDLINE_STRING));
             length += sizeof(ENDLINE_STRING);
         }
-
         // Send data through CDC ACM
         ret_code_t ret = app_usbd_cdc_acm_write(&m_app_cdc_acm,
                                                m_nus_data_array,
                                                length);
+
+        // send loopback data                                       
+        ret = ble_nus_data_send(&m_nus,
+                                (uint8_t *) m_nus_data_array,
+                                &length,
+                                m_conn_handle);
+
        if(ret != NRF_SUCCESS)
         {
             NRF_LOG_INFO("CDC ACM unavailable, data received: %s", m_nus_data_array);
